@@ -1,0 +1,199 @@
+aid: jupiter-ag
+url: https://raw.githubusercontent.com/api-evangelist/jupiter-ag/refs/heads/main/apis.yml
+name: Jupiter
+kind: company
+description: >-
+  Jupiter is the liquidity infrastructure powering the majority of DeFi on Solana.
+  It aggregates spot DEXes, runs leveraged perpetuals, supports limit orders, dollar
+  cost averaging, lending and flash loans, prediction markets, and a token launchpad.
+  Developers integrate via production-grade REST APIs at api.jup.ag (and the rate-
+  limited lite-api.jup.ag) covering Swap, Tokens, Price, Lend, Trigger (limit orders),
+  Recurring (DCA), Perps, and Prediction, all behind a single API key. Open-source SDKs
+  and the Jupiter Terminal embed widget extend the platform to wallets, exchanges, and
+  apps.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Solana
+  - DeFi
+  - DEX Aggregator
+  - Swap
+  - Perpetuals
+  - Limit Orders
+  - DCA
+  - Lending
+created: '2026-05-23'
+modified: '2026-05-23'
+specificationVersion: '0.19'
+apis:
+  - aid: jupiter-ag:swap-api
+    name: Jupiter Swap API
+    description: >-
+      Returns the best swap route across Solana DEX liquidity and produces a versioned
+      transaction ready to sign and send. Supports quote-then-swap, swap-instructions
+      for custom transaction building, slippage models, dynamic compute units, and
+      priority fee guidance.
+    humanURL: https://dev.jup.ag/docs/swap-api
+    baseURL: https://api.jup.ag/swap
+    tags:
+      - Swap
+      - Aggregation
+      - Quote
+      - Solana
+    properties:
+      - type: Documentation
+        url: https://dev.jup.ag/docs/swap-api
+      - type: Repository
+        url: https://github.com/jup-ag/jupiter-quote-api-node
+  - aid: jupiter-ag:tokens-api
+    name: Jupiter Tokens API
+    description: >-
+      Search Solana tokens by mint, symbol, or name; fetch metadata, verification
+      status, tags, and trading metrics. Backs Jupiter's verified token list.
+    humanURL: https://dev.jup.ag/docs/tokens-api
+    baseURL: https://api.jup.ag/tokens
+    tags:
+      - Tokens
+      - Metadata
+      - Search
+      - Solana
+    properties:
+      - type: Documentation
+        url: https://dev.jup.ag/docs/tokens-api
+  - aid: jupiter-ag:price-api
+    name: Jupiter Price API
+    description: >-
+      USD pricing for up to 50 Solana tokens per request, sourced from on-chain
+      aggregated liquidity. Used for portfolio valuation, charting, and quote
+      previews.
+    humanURL: https://dev.jup.ag/docs/price-api
+    baseURL: https://api.jup.ag/price
+    tags:
+      - Price
+      - Market Data
+      - Solana
+    properties:
+      - type: Documentation
+        url: https://dev.jup.ag/docs/price-api
+  - aid: jupiter-ag:trigger-api
+    name: Jupiter Trigger API (Limit Orders)
+    description: >-
+      Create, query, and cancel on-chain trigger orders — single limit orders as well
+      as one-cancels-the-other (OCO) and one-triggers-the-other (OTOCO) order
+      structures.
+    humanURL: https://dev.jup.ag/docs/trigger-api
+    baseURL: https://api.jup.ag/trigger
+    tags:
+      - Limit Orders
+      - Trigger
+      - Trading
+    properties:
+      - type: Documentation
+        url: https://dev.jup.ag/docs/trigger-api
+  - aid: jupiter-ag:recurring-api
+    name: Jupiter Recurring API (DCA)
+    description: >-
+      Schedule recurring (dollar-cost-averaging) swaps that execute on a time
+      interval. Manage active DCA positions and fetch execution history.
+    humanURL: https://dev.jup.ag/docs/recurring-api
+    baseURL: https://api.jup.ag/recurring
+    tags:
+      - DCA
+      - Recurring
+      - Automation
+    properties:
+      - type: Documentation
+        url: https://dev.jup.ag/docs/recurring-api
+  - aid: jupiter-ag:perps-api
+    name: Jupiter Perps API
+    description: >-
+      REST interface to Jupiter Perpetuals — fetch markets, positions, funding,
+      pricing, and build open / close / modify position transactions.
+    humanURL: https://dev.jup.ag/docs/perp-api
+    baseURL: https://perps-api.jup.ag
+    tags:
+      - Perpetuals
+      - Leverage
+      - Trading
+    properties:
+      - type: Documentation
+        url: https://dev.jup.ag/docs/perp-api
+  - aid: jupiter-ag:lend-api
+    name: Jupiter Lend API
+    description: >-
+      Lending product API for supplying, borrowing, repaying, withdrawing, and
+      executing flash loans against Jupiter Lend markets.
+    humanURL: https://dev.jup.ag/docs/lend-api
+    baseURL: https://api.jup.ag/lend
+    tags:
+      - Lending
+      - Borrowing
+      - Flash Loans
+    properties:
+      - type: Documentation
+        url: https://dev.jup.ag/docs/lend-api
+  - aid: jupiter-ag:prediction-api
+    name: Jupiter Prediction API
+    description: >-
+      Binary prediction-market API for browsing markets, fetching prices and
+      positions, and constructing trade transactions.
+    humanURL: https://dev.jup.ag/docs/prediction-api
+    baseURL: https://api.jup.ag/prediction
+    tags:
+      - Prediction Markets
+      - Trading
+    properties:
+      - type: Documentation
+        url: https://dev.jup.ag/docs/prediction-api
+  - aid: jupiter-ag:lite-api
+    name: Jupiter Lite API
+    description: >-
+      Public, no-key, rate-limited mirror of the Jupiter API surface intended for
+      experimentation, demos, and low-volume integrations.
+    humanURL: https://dev.jup.ag
+    baseURL: https://lite-api.jup.ag
+    tags:
+      - Public
+      - Rate Limited
+      - Lite
+    properties:
+      - type: Documentation
+        url: https://dev.jup.ag
+  - aid: jupiter-ag:terminal
+    name: Jupiter Terminal
+    description: >-
+      Open-source embeddable swap widget that drops a fully-featured Jupiter swap
+      experience into any web app with a few lines of code.
+    humanURL: https://terminal.jup.ag
+    baseURL: https://github.com/jup-ag/plugin
+    tags:
+      - Widget
+      - Embed
+      - Swap
+    properties:
+      - type: Documentation
+        url: https://terminal.jup.ag
+      - type: Repository
+        url: https://github.com/jup-ag/plugin
+common:
+  - type: Website
+    url: https://jup.ag
+  - type: Developers
+    url: https://dev.jup.ag
+  - type: Documentation
+    url: https://dev.jup.ag/docs
+  - type: GitHub
+    url: https://github.com/jup-ag
+  - type: Twitter
+    url: https://x.com/JupiterExchange
+  - type: Discord
+    url: https://discord.gg/jup
+  - type: Blog
+    url: https://www.jup.ag/blog
+integrations:
+  - name: Solana
+  - name: Phantom
+  - name: Solflare
+  - name: Backpack
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
