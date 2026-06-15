@@ -1,0 +1,318 @@
+{
+  "item": [
+    {
+      "id": "b6617275-8860-44c0-bf19-e8b8a37c0a7f",
+      "name": "Swap",
+      "description": {
+        "content": "Quote and build Solana DEX-aggregator swap transactions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "531d300b-54b8-4c93-959d-80a6d64cbd72",
+          "name": "Get a swap quote",
+          "request": {
+            "name": "Get a swap quote",
+            "description": {
+              "content": "Returns the best routing plan and pricing for swapping an input token into an output token across Solana DEXes. The response is passed directly to /swap to build a swap transaction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "inputMint",
+                  "value": "<string>",
+                  "description": "(Required) The input token mint address."
+                },
+                {
+                  "disabled": false,
+                  "key": "outputMint",
+                  "value": "<string>",
+                  "description": "(Required) The output token mint address."
+                },
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<long>",
+                  "description": "(Required) Raw input token amount in atomic units (lamports for SOL)."
+                },
+                {
+                  "disabled": false,
+                  "key": "slippageBps",
+                  "value": "<integer>",
+                  "description": "Acceptable slippage in basis points (100 bps = 1%)."
+                },
+                {
+                  "disabled": false,
+                  "key": "swapMode",
+                  "value": "<string>",
+                  "description": "Whether the amount represents the exact input or exact output."
+                },
+                {
+                  "disabled": false,
+                  "key": "restrictIntermediateTokens",
+                  "value": "<boolean>",
+                  "description": "When true, restricts intermediate tokens to a curated stable set for more reliable routes."
+                },
+                {
+                  "disabled": false,
+                  "key": "onlyDirectRoutes",
+                  "value": "<boolean>",
+                  "description": "Restricts routing to single-market direct swaps only."
+                },
+                {
+                  "disabled": false,
+                  "key": "asLegacyTransaction",
+                  "value": "<boolean>",
+                  "description": "Returns a legacy (non-versioned) transaction when used with /swap."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxAccounts",
+                  "value": "<integer>",
+                  "description": "Upper bound on the accounts used in the swap transaction."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f176be50-259e-42b0-ada7-38f5d3d3e99f",
+              "name": "A routing plan and quote ready to be passed to /swap.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "inputMint",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "outputMint",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "slippageBps",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "swapMode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "restrictIntermediateTokens",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyDirectRoutes",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "asLegacyTransaction",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "maxAccounts",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"inputMint\": \"string\",\n  \"inAmount\": \"string\",\n  \"outputMint\": \"string\",\n  \"outAmount\": \"string\",\n  \"otherAmountThreshold\": \"string\",\n  \"swapMode\": \"string\",\n  \"slippageBps\": 8727,\n  \"priceImpactPct\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f632d000-dadb-46f4-88dd-eb95e18ea8c7",
+          "name": "Build a swap transaction",
+          "request": {
+            "name": "Build a swap transaction",
+            "description": {
+              "content": "Converts a quote response and a user public key into a serialized Solana transaction ready to be signed and submitted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "swap"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quoteResponse\": {\n    \"inputMint\": \"<string>\",\n    \"inAmount\": \"<string>\",\n    \"outputMint\": \"<string>\",\n    \"outAmount\": \"<string>\",\n    \"otherAmountThreshold\": \"<string>\",\n    \"swapMode\": \"<string>\",\n    \"slippageBps\": \"<integer>\",\n    \"priceImpactPct\": \"<string>\",\n    \"routePlan\": [\n      \"<object>\",\n      \"<object>\"\n    ]\n  },\n  \"userPublicKey\": \"<string>\",\n  \"dynamicComputeUnitLimit\": \"<boolean>\",\n  \"dynamicSlippage\": \"<boolean>\",\n  \"prioritizationFeeLamports\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "28fd9d70-67c8-49e3-a992-454c775833ce",
+              "name": "A base64-encoded swap transaction and execution metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "swap"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quoteResponse\": {\n    \"inputMint\": \"string\",\n    \"inAmount\": \"string\",\n    \"outputMint\": \"string\",\n    \"outAmount\": \"string\",\n    \"otherAmountThreshold\": \"string\",\n    \"swapMode\": \"string\",\n    \"slippageBps\": 5617,\n    \"priceImpactPct\": \"string\"\n  },\n  \"userPublicKey\": \"<string>\",\n  \"dynamicComputeUnitLimit\": \"<boolean>\",\n  \"dynamicSlippage\": \"<boolean>\",\n  \"prioritizationFeeLamports\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"swapTransaction\": \"string\",\n  \"lastValidBlockHeight\": 586,\n  \"prioritizationFeeLamports\": 6524,\n  \"computeUnitLimit\": 5857,\n  \"dynamicSlippageReport\": {},\n  \"simulationError\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.jup.ag/swap/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "78688f09-a581-4e4a-b629-7806fca89f7b",
+    "name": "Jupiter Swap API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Jupiter is the leading Solana DEX aggregator. The Swap API returns the best routes across Solana DEXes and builds serialized transactions ready to be signed and sent. The full-rate production endpoint is api.jup.ag; a rate-limited public endpoint is available at lite-api.jup.ag. Requests against api.jup.ag require an API key issued via the Jupiter Developer Platform.\n\nContact Support:\n Name: Jupiter Developer Platform",
+      "type": "text/plain"
+    }
+  }
+}
