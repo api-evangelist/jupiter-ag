@@ -3,16 +3,10 @@
   "feeds": [
     {
       "source": "https://www.jup.ag/blog",
-      "error": "HTTPError"
-    },
-    {
-      "source": "https://discord.gg/jup",
-      "feed_url": "https://discord.gg/jup",
-      "title": "",
       "saved": 0,
-      "method": "none"
+      "error": "HTTP 404 Not Found on blog listing"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:48:58Z"
 }
