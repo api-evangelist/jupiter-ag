@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/jupiter-ag-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  description: Jupiter API key issued via the Jupiter Developer Platform.
+  sources:
+  - openapi/jupiter-ag-openapi.yml
