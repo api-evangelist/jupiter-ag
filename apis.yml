@@ -175,6 +175,8 @@ apis:
       - type: Repository
         url: https://github.com/jup-ag/plugin
 common:
+  - type: AgenticAccess
+    url: agentic-access/jupiter-ag-agentic-access.yml
   - type: DomainSecurity
     url: security/jupiter-ag-domain-security.yml
   - type: Authentication
