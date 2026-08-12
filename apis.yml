@@ -195,6 +195,8 @@ apis:
   - type: OpenAPI
     url: openapi/jupiter-ag-swap-api-openapi.yml
 common:
+  - type: IssueTracker
+    url: https://github.com/jup-ag/jupiter-quote-api-node/issues
   - type: AgenticAccess
     url: agentic-access/jupiter-ag-agentic-access.yml
   - type: DomainSecurity
