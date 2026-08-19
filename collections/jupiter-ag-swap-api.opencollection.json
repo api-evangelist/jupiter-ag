@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Jupiter Swap API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Swap",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a swap quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.jup.ag/swap/v1/quote",
+            "params": [
+              {
+                "name": "inputMint",
+                "value": "",
+                "type": "query",
+                "description": "The input token mint address."
+              },
+              {
+                "name": "outputMint",
+                "value": "",
+                "type": "query",
+                "description": "The output token mint address."
+              },
+              {
+                "name": "amount",
+                "value": "",
+                "type": "query",
+                "description": "Raw input token amount in atomic units (lamports for SOL)."
+              },
+              {
+                "name": "slippageBps",
+                "value": "",
+                "type": "query",
+                "description": "Acceptable slippage in basis points (100 bps = 1%)."
+              },
+              {
+                "name": "swapMode",
+                "value": "",
+                "type": "query",
+                "description": "Whether the amount represents the exact input or exact output."
+              },
+              {
+                "name": "restrictIntermediateTokens",
+                "value": "",
+                "type": "query",
+                "description": "When true, restricts intermediate tokens to a curated stable set for more reliable routes."
+              },
+              {
+                "name": "onlyDirectRoutes",
+                "value": "",
+                "type": "query",
+                "description": "Restricts routing to single-market direct swaps only."
+              },
+              {
+                "name": "asLegacyTransaction",
+                "value": "",
+                "type": "query",
+                "description": "Returns a legacy (non-versioned) transaction when used with /swap."
+              },
+              {
+                "name": "maxAccounts",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound on the accounts used in the swap transaction."
+              }
+            ]
+          },
+          "docs": "Returns the best routing plan and pricing for swapping an input token into an output token across Solana DEXes. The response is passed directly to /swap to build a swap transaction."
+        },
+        {
+          "info": {
+            "name": "Build a swap transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.jup.ag/swap/v1/swap",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Converts a quote response and a user public key into a serialized Solana transaction ready to be signed and submitted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
