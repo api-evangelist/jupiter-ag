@@ -49,6 +49,11 @@ apis:
   tags:
   - Swap
   - Aggregation
+  - Quotes
+  - Solana
+  tags_raw:
+  - Swap
+  - Aggregation
   - Quote
   - Solana
   properties:
