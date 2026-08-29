@@ -11,6 +11,18 @@ description: >-
   Recurring (DCA), Perps, and Prediction, all behind a single API key. Open-source SDKs
   and the Jupiter Terminal embed widget extend the platform to wallets, exchanges, and
   apps.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: false
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: self-serve
