@@ -194,6 +194,10 @@ apis:
   humanURL: https://terminal.jup.ag
   baseURL: https://github.com/jup-ag/plugin
   tags:
+  - Widgets
+  - Embed
+  - Swap
+  tags_raw:
   - Widget
   - Embed
   - Swap
