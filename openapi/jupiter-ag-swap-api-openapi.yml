@@ -113,26 +113,6 @@ paths:
                 $ref: '#/components/schemas/SwapResponse'
 components:
   schemas:
-    SwapResponse:
-      type: object
-      properties:
-        swapTransaction:
-          type: string
-          description: Base64-encoded serialized swap transaction.
-        lastValidBlockHeight:
-          type: integer
-          description: Block height at which the transaction expires.
-        prioritizationFeeLamports:
-          type: integer
-        computeUnitLimit:
-          type: integer
-        dynamicSlippageReport:
-          type: object
-          description: Slippage analytics and heuristics.
-        simulationError:
-          type:
-          - object
-          - 'null'
     SwapRequest:
       type: object
       required:
@@ -180,6 +160,26 @@ components:
           description: Detailed swap path across DEXes.
           items:
             type: object
+    SwapResponse:
+      type: object
+      properties:
+        swapTransaction:
+          type: string
+          description: Base64-encoded serialized swap transaction.
+        lastValidBlockHeight:
+          type: integer
+          description: Block height at which the transaction expires.
+        prioritizationFeeLamports:
+          type: integer
+        computeUnitLimit:
+          type: integer
+        dynamicSlippageReport:
+          type: object
+          description: Slippage analytics and heuristics.
+        simulationError:
+          type:
+          - object
+          - 'null'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
