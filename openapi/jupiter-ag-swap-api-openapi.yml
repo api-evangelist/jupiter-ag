@@ -113,28 +113,6 @@ paths:
                 $ref: '#/components/schemas/SwapResponse'
 components:
   schemas:
-    SwapRequest:
-      type: object
-      required:
-      - quoteResponse
-      - userPublicKey
-      properties:
-        quoteResponse:
-          $ref: '#/components/schemas/QuoteResponse'
-        userPublicKey:
-          type: string
-          description: The user's wallet public key.
-        dynamicComputeUnitLimit:
-          type: boolean
-          description: Optimizes compute unit estimation when true.
-        dynamicSlippage:
-          type: boolean
-          description: Adjusts slippage dynamically when true.
-        prioritizationFeeLamports:
-          oneOf:
-          - type: integer
-          - type: object
-          description: Priority fee configuration in lamports or as an object.
     QuoteResponse:
       type: object
       properties:
@@ -160,6 +138,28 @@ components:
           description: Detailed swap path across DEXes.
           items:
             type: object
+    SwapRequest:
+      type: object
+      required:
+      - quoteResponse
+      - userPublicKey
+      properties:
+        quoteResponse:
+          $ref: '#/components/schemas/QuoteResponse'
+        userPublicKey:
+          type: string
+          description: The user's wallet public key.
+        dynamicComputeUnitLimit:
+          type: boolean
+          description: Optimizes compute unit estimation when true.
+        dynamicSlippage:
+          type: boolean
+          description: Adjusts slippage dynamically when true.
+        prioritizationFeeLamports:
+          oneOf:
+          - type: integer
+          - type: object
+          description: Priority fee configuration in lamports or as an object.
     SwapResponse:
       type: object
       properties:
