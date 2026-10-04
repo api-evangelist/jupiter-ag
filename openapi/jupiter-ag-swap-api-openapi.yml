@@ -113,6 +113,48 @@ paths:
                 $ref: '#/components/schemas/SwapResponse'
 components:
   schemas:
+    SwapResponse:
+      type: object
+      properties:
+        swapTransaction:
+          type: string
+          description: Base64-encoded serialized swap transaction.
+        lastValidBlockHeight:
+          type: integer
+          description: Block height at which the transaction expires.
+        prioritizationFeeLamports:
+          type: integer
+        computeUnitLimit:
+          type: integer
+        dynamicSlippageReport:
+          type: object
+          description: Slippage analytics and heuristics.
+        simulationError:
+          type:
+          - object
+          - 'null'
+    SwapRequest:
+      type: object
+      required:
+      - quoteResponse
+      - userPublicKey
+      properties:
+        quoteResponse:
+          $ref: '#/components/schemas/QuoteResponse'
+        userPublicKey:
+          type: string
+          description: The user's wallet public key.
+        dynamicComputeUnitLimit:
+          type: boolean
+          description: Optimizes compute unit estimation when true.
+        dynamicSlippage:
+          type: boolean
+          description: Adjusts slippage dynamically when true.
+        prioritizationFeeLamports:
+          oneOf:
+          - type: integer
+          - type: object
+          description: Priority fee configuration in lamports or as an object.
     QuoteResponse:
       type: object
       properties:
@@ -138,48 +180,6 @@ components:
           description: Detailed swap path across DEXes.
           items:
             type: object
-    SwapRequest:
-      type: object
-      required:
-      - quoteResponse
-      - userPublicKey
-      properties:
-        quoteResponse:
-          $ref: '#/components/schemas/QuoteResponse'
-        userPublicKey:
-          type: string
-          description: The user's wallet public key.
-        dynamicComputeUnitLimit:
-          type: boolean
-          description: Optimizes compute unit estimation when true.
-        dynamicSlippage:
-          type: boolean
-          description: Adjusts slippage dynamically when true.
-        prioritizationFeeLamports:
-          oneOf:
-          - type: integer
-          - type: object
-          description: Priority fee configuration in lamports or as an object.
-    SwapResponse:
-      type: object
-      properties:
-        swapTransaction:
-          type: string
-          description: Base64-encoded serialized swap transaction.
-        lastValidBlockHeight:
-          type: integer
-          description: Block height at which the transaction expires.
-        prioritizationFeeLamports:
-          type: integer
-        computeUnitLimit:
-          type: integer
-        dynamicSlippageReport:
-          type: object
-          description: Slippage analytics and heuristics.
-        simulationError:
-          type:
-          - object
-          - 'null'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
