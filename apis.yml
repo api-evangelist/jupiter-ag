@@ -210,16 +210,126 @@ apis:
     url: https://terminal.jup.ag
   - type: Repository
     url: https://github.com/jup-ag/plugin
-- aid: jupiter-ag:jupiter-ag-swap-api
-  name: Jupiter Swap API
-  description: Quote and build Solana DEX-aggregator swap transactions.
+- aid: jupiter-ag:jupiter-ag-events-api
+  name: Jupiter Events API
+  description: The Events API from Jupiter — 6 operation(s) for events.
   humanURL: https://dev.jup.ag/docs/swap-api
   baseURL: https://api.jup.ag/swap
   tags:
-  - Swap
+  - Events
   properties:
   - type: OpenAPI
-    url: openapi/jupiter-ag-swap-api-openapi.yml
+    url: openapi/jupiter-ag-events-api-openapi.yml
+- aid: jupiter-ag:jupiter-ag-forecast-api
+  name: Jupiter Forecast API
+  description: The Forecast API from Jupiter — 1 operation(s) for forecast.
+  humanURL: https://dev.jup.ag/docs/swap-api
+  baseURL: https://api.jup.ag/swap
+  tags:
+  - Forecast
+  properties:
+  - type: OpenAPI
+    url: openapi/jupiter-ag-forecast-api-openapi.yml
+- aid: jupiter-ag:jupiter-ag-history-api
+  name: Jupiter History API
+  description: The History API from Jupiter — 1 operation(s) for history.
+  humanURL: https://dev.jup.ag/docs/swap-api
+  baseURL: https://api.jup.ag/swap
+  tags:
+  - History
+  properties:
+  - type: OpenAPI
+    url: openapi/jupiter-ag-history-api-openapi.yml
+- aid: jupiter-ag:jupiter-ag-leaderboards-api
+  name: Jupiter Leaderboards API
+  description: The Leaderboards API from Jupiter — 1 operation(s) for leaderboards.
+  humanURL: https://dev.jup.ag/docs/swap-api
+  baseURL: https://api.jup.ag/swap
+  tags:
+  - Leaderboards
+  properties:
+  - type: OpenAPI
+    url: openapi/jupiter-ag-leaderboards-api-openapi.yml
+- aid: jupiter-ag:jupiter-ag-markets-api
+  name: Jupiter Markets API
+  description: The Markets API from Jupiter — 3 operation(s) for markets.
+  humanURL: https://dev.jup.ag/docs/swap-api
+  baseURL: https://api.jup.ag/swap
+  tags:
+  - Markets
+  properties:
+  - type: OpenAPI
+    url: openapi/jupiter-ag-markets-api-openapi.yml
+- aid: jupiter-ag:jupiter-ag-orderbook-api
+  name: Jupiter Orderbook API
+  description: The Orderbook API from Jupiter — 1 operation(s) for orderbook.
+  humanURL: https://dev.jup.ag/docs/swap-api
+  baseURL: https://api.jup.ag/swap
+  tags:
+  - Orderbook
+  properties:
+  - type: OpenAPI
+    url: openapi/jupiter-ag-orderbook-api-openapi.yml
+- aid: jupiter-ag:jupiter-ag-orders-api
+  name: Jupiter Orders API
+  description: The Orders API from Jupiter — 4 operation(s) for orders.
+  humanURL: https://dev.jup.ag/docs/swap-api
+  baseURL: https://api.jup.ag/swap
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/jupiter-ag-orders-api-openapi.yml
+- aid: jupiter-ag:jupiter-ag-positions-api
+  name: Jupiter Positions API
+  description: The Positions API from Jupiter — 3 operation(s) for positions.
+  humanURL: https://dev.jup.ag/docs/swap-api
+  baseURL: https://api.jup.ag/swap
+  tags:
+  - Positions
+  properties:
+  - type: OpenAPI
+    url: openapi/jupiter-ag-positions-api-openapi.yml
+- aid: jupiter-ag:jupiter-ag-profile-api
+  name: Jupiter Profile API
+  description: The Profile API from Jupiter — 2 operation(s) for profile.
+  humanURL: https://dev.jup.ag/docs/swap-api
+  baseURL: https://api.jup.ag/swap
+  tags:
+  - Profile
+  properties:
+  - type: OpenAPI
+    url: openapi/jupiter-ag-profile-api-openapi.yml
+- aid: jupiter-ag:jupiter-ag-trades-api
+  name: Jupiter Trades API
+  description: The Trades API from Jupiter — 1 operation(s) for trades.
+  humanURL: https://dev.jup.ag/docs/swap-api
+  baseURL: https://api.jup.ag/swap
+  tags:
+  - Trades
+  properties:
+  - type: OpenAPI
+    url: openapi/jupiter-ag-trades-api-openapi.yml
+- aid: jupiter-ag:jupiter-ag-trading-api
+  name: Jupiter Trading API
+  description: The Trading API from Jupiter — 1 operation(s) for trading.
+  humanURL: https://dev.jup.ag/docs/swap-api
+  baseURL: https://api.jup.ag/swap
+  tags:
+  - Trading
+  properties:
+  - type: OpenAPI
+    url: openapi/jupiter-ag-trading-api-openapi.yml
+- aid: jupiter-ag:jupiter-ag-vault-api
+  name: Jupiter Vault API
+  description: The Vault API from Jupiter — 1 operation(s) for vault.
+  humanURL: https://dev.jup.ag/docs/swap-api
+  baseURL: https://api.jup.ag/swap
+  tags:
+  - Vault
+  properties:
+  - type: OpenAPI
+    url: openapi/jupiter-ag-vault-api-openapi.yml
 common:
   - type: Plans
     url: plans/jupiter-ag-plans-pricing.yml

@@ -1,0 +1,43 @@
+openapi: 3.2.0
+info:
+  title: Jupiter Prediction Market Trading API
+  version: 1.0.0
+  description: Jupiter Prediction Market API Schema
+servers:
+- url: https://api.jup.ag/prediction/v1
+  description: Jupiter Prediction Market API Endpoint
+security:
+- ApiKeyAuth: []
+tags:
+- name: Trading
+paths:
+  /trading-status:
+    get:
+      tags:
+      - Trading
+      summary: Get trading status
+      description: Whether the exchange currently accepts orders (`trading_active`). Check it before building an order.
+      responses:
+        '200':
+          description: Whether trading is currently enabled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TradingStatusResponse'
+      operationId: getTradingStatus
+      x-operation-id-source: derived
+components:
+  schemas:
+    TradingStatusResponse:
+      type: object
+      properties:
+        trading_active:
+          type: boolean
+      required:
+      - trading_active
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Get API key via https://developers.jup.ag/portal

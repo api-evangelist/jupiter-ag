@@ -1,0 +1,199 @@
+openapi: 3.1.0
+info:
+  title: Jupiter Swap API
+  description: >-
+    Jupiter is the leading Solana DEX aggregator. The Swap API returns the
+    best routes across Solana DEXes and builds serialized transactions ready
+    to be signed and sent. The full-rate production endpoint is api.jup.ag;
+    a rate-limited public endpoint is available at lite-api.jup.ag. Requests
+    against api.jup.ag require an API key issued via the Jupiter Developer
+    Platform.
+  version: "1.0"
+  contact:
+    name: Jupiter Developer Platform
+    url: https://developers.jup.ag/docs/swap-api
+servers:
+  - url: https://api.jup.ag/swap/v1
+    description: Jupiter Swap API (authenticated, production)
+  - url: https://lite-api.jup.ag/swap/v1
+    description: Jupiter Swap API (rate-limited public endpoint)
+security:
+  - ApiKeyAuth: []
+  - {}
+paths:
+  /quote:
+    get:
+      summary: Get a swap quote
+      description: >-
+        Returns the best routing plan and pricing for swapping an input token
+        into an output token across Solana DEXes. The response is passed
+        directly to /swap to build a swap transaction.
+      operationId: getQuote
+      tags:
+        - Swap
+      parameters:
+        - name: inputMint
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The input token mint address.
+        - name: outputMint
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The output token mint address.
+        - name: amount
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: Raw input token amount in atomic units (lamports for SOL).
+        - name: slippageBps
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Acceptable slippage in basis points (100 bps = 1%).
+        - name: swapMode
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - ExactIn
+              - ExactOut
+          description: Whether the amount represents the exact input or exact output.
+        - name: restrictIntermediateTokens
+          in: query
+          required: false
+          schema:
+            type: boolean
+          description: When true, restricts intermediate tokens to a curated stable set for more reliable routes.
+        - name: onlyDirectRoutes
+          in: query
+          required: false
+          schema:
+            type: boolean
+          description: Restricts routing to single-market direct swaps only.
+        - name: asLegacyTransaction
+          in: query
+          required: false
+          schema:
+            type: boolean
+          description: Returns a legacy (non-versioned) transaction when used with /swap.
+        - name: maxAccounts
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Upper bound on the accounts used in the swap transaction.
+      responses:
+        "200":
+          description: A routing plan and quote ready to be passed to /swap.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteResponse'
+  /swap:
+    post:
+      summary: Build a swap transaction
+      description: >-
+        Converts a quote response and a user public key into a serialized
+        Solana transaction ready to be signed and submitted.
+      operationId: postSwap
+      tags:
+        - Swap
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SwapRequest'
+      responses:
+        "200":
+          description: A base64-encoded swap transaction and execution metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwapResponse'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Jupiter API key issued via the Jupiter Developer Platform.
+  schemas:
+    QuoteResponse:
+      type: object
+      properties:
+        inputMint:
+          type: string
+        inAmount:
+          type: string
+        outputMint:
+          type: string
+        outAmount:
+          type: string
+        otherAmountThreshold:
+          type: string
+          description: Minimum acceptable output amount after slippage.
+        swapMode:
+          type: string
+        slippageBps:
+          type: integer
+        priceImpactPct:
+          type: string
+        routePlan:
+          type: array
+          description: Detailed swap path across DEXes.
+          items:
+            type: object
+    SwapRequest:
+      type: object
+      required:
+        - quoteResponse
+        - userPublicKey
+      properties:
+        quoteResponse:
+          $ref: '#/components/schemas/QuoteResponse'
+        userPublicKey:
+          type: string
+          description: The user's wallet public key.
+        dynamicComputeUnitLimit:
+          type: boolean
+          description: Optimizes compute unit estimation when true.
+        dynamicSlippage:
+          type: boolean
+          description: Adjusts slippage dynamically when true.
+        prioritizationFeeLamports:
+          oneOf:
+            - type: integer
+            - type: object
+          description: Priority fee configuration in lamports or as an object.
+    SwapResponse:
+      type: object
+      properties:
+        swapTransaction:
+          type: string
+          description: Base64-encoded serialized swap transaction.
+        lastValidBlockHeight:
+          type: integer
+          description: Block height at which the transaction expires.
+        prioritizationFeeLamports:
+          type: integer
+        computeUnitLimit:
+          type: integer
+        dynamicSlippageReport:
+          type: object
+          description: Slippage analytics and heuristics.
+        simulationError:
+          type:
+            - object
+            - "null"
+tags:
+  - name: Swap
+    description: Quote and build Solana DEX-aggregator swap transactions.

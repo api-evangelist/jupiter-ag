@@ -1,0 +1,102 @@
+openapi: 3.2.0
+info:
+  title: Jupiter Prediction Market Forecast API
+  version: 1.0.0
+  description: Jupiter Prediction Market API Schema
+servers:
+- url: https://api.jup.ag/prediction/v1
+  description: Jupiter Prediction Market API Endpoint
+security:
+- ApiKeyAuth: []
+tags:
+- name: Forecast
+paths:
+  /forecast:
+    get:
+      tags:
+      - Forecast
+      summary: Get forecast history
+      description: Forecast time series recorded for a market, as `forecast_history` entries.
+      parameters:
+      - schema:
+          type: string
+          minLength: 1
+        required: true
+        description: Market identifier to fetch the forecast for. Required; omitting it returns 400.
+        name: marketId
+        in: query
+      responses:
+        '200':
+          description: Forecast time-series for the market
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  forecast_history:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        market_ticker:
+                          type: string
+                        event_ticker:
+                          type: string
+                        end_period_ts:
+                          type: number
+                        period_interval:
+                          type: number
+                        numerical_forecast:
+                          type: number
+                        raw_numerical_forecast:
+                          type: number
+                        formatted_forecast:
+                          type: string
+        '400':
+          description: Invalid or missing market ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Failed to fetch forecast data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      operationId: getForecast
+      x-operation-id-source: derived
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - invalid_request_error
+          - authentication_error
+          - permission_error
+          - idempotency_error
+          - rate_limit_error
+          - api_error
+        message:
+          type: string
+        code:
+          type: string
+        param:
+          type: string
+        request_id:
+          type: string
+        doc_url:
+          type: string
+      required:
+      - type
+      - message
+      - request_id
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Get API key via https://developers.jup.ag/portal

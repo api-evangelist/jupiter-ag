@@ -1,0 +1,12 @@
+{
+ "url": "https://developers.jup.ag/docs/openapi-spec/prediction/prediction.yaml",
+ "final": "https://developers.jup.ag/docs/openapi-spec/prediction/prediction.yaml",
+ "status": 200,
+ "content_type": "text/yaml",
+ "bytes": 90644,
+ "sha256": "094a6d9db3edf99ca0aedd3004473b0c36b49aa09980942f62aca6e23a36bb82",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "re-archived: the provider's current document replaced a stale archive (roadmap#793); the old files are in openapi/_superseded/2026-10-19-stale"
+}

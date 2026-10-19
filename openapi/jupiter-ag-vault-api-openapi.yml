@@ -1,0 +1,59 @@
+openapi: 3.2.0
+info:
+  title: Jupiter Prediction Market Vault API
+  version: 1.0.0
+  description: Jupiter Prediction Market API Schema
+servers:
+- url: https://api.jup.ag/prediction/v1
+  description: Jupiter Prediction Market API Endpoint
+security:
+- ApiKeyAuth: []
+tags:
+- name: Vault
+paths:
+  /vault-info:
+    get:
+      tags:
+      - Vault
+      summary: Get vault info
+      description: 'Settlement vault account: public key, decoded account data and balance.'
+      responses:
+        '200':
+          description: Vault account data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pubkey:
+                    type: string
+                  data:
+                    type: object
+                    additionalProperties:
+                      type: string
+                  vaultBalance:
+                    type: string
+                required:
+                - pubkey
+                - data
+                - vaultBalance
+        '404':
+          description: Vault account not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+      operationId: getVaultInfo
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Get API key via https://developers.jup.ag/portal
