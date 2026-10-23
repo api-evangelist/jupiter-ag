@@ -116,3 +116,9 @@ components:
       in: header
       name: x-api-key
       description: Get API key via https://developers.jup.ag/portal
+x-provenance:
+  method: harvested
+  publisher: Jupiter
+  source: https://developers.jup.ag/docs/openapi-spec/prediction/prediction.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
