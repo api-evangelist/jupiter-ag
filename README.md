@@ -1,4 +1,4 @@
-# Jupiter (jupiter-ag)
+# Jupiter
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,230 +66,125 @@
 
 Jupiter is the liquidity infrastructure powering the majority of DeFi on Solana. It aggregates spot DEXes, runs leveraged perpetuals, supports limit orders, dollar cost averaging, lending and flash loans, prediction markets, and a token launchpad. Developers integrate via production-grade REST APIs at api.jup.ag (and the rate- limited lite-api.jup.ag) covering Swap, Tokens, Price, Lend, Trigger (limit orders), Recurring (DCA), Perps, and Prediction, all behind a single API key. Open-source SDKs and the Jupiter Terminal embed widget extend the platform to wallets, exchanges, and apps.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/jupiter-ag/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/jupiter-ag/refs/heads/main/apis.yml)
+**Areas:** Solana · DeFi · DEX Aggregator · Swap · Perpetuals · Limit Orders · DCA · Lending
 
-## Tags
+## Jupiter on APIs.io
 
-- Solana
-- DeFi
-- DEX Aggregator
-- Swap
-- Perpetuals
-- Limit Orders
-- DCA
-- Lending
+Everything profiled for Jupiter is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/jupiter-ag/](https://apis.io/providers/jupiter-ag/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (11)
 
-- **Created:** 2026-05-23
-- **Modified:** 2026-05-23
+- [Jupiter Swap API](https://apis.io/apis/jupiter-ag/swap-api/) — Returns the best swap route across Solana DEX liquidity and produces a versioned transaction ready to sign and send. Supports quote-then-swap,…
+- [Jupiter Tokens API](https://apis.io/apis/jupiter-ag/tokens-api/) — Search Solana tokens by mint, symbol, or name; fetch metadata, verification status, tags, and trading metrics. Backs Jupiter's verified token list.
+- [Jupiter Price API](https://apis.io/apis/jupiter-ag/price-api/) — USD pricing for up to 50 Solana tokens per request, sourced from on-chain aggregated liquidity. Used for portfolio valuation, charting, and quote previews.
+- [Jupiter Trigger API (Limit Orders)](https://apis.io/apis/jupiter-ag/trigger-api/) — Create, query, and cancel on-chain trigger orders — single limit orders as well as one-cancels-the-other (OCO) and one-triggers-the-other (OTOCO) order…
+- [Jupiter Recurring API (DCA)](https://apis.io/apis/jupiter-ag/recurring-api/) — Schedule recurring (dollar-cost-averaging) swaps that execute on a time interval. Manage active DCA positions and fetch execution history.
+- [Jupiter Perps API](https://apis.io/apis/jupiter-ag/perps-api/) — REST interface to Jupiter Perpetuals — fetch markets, positions, funding, pricing, and build open / close / modify position transactions.
+- [Jupiter Lend API](https://apis.io/apis/jupiter-ag/lend-api/) — Lending product API for supplying, borrowing, repaying, withdrawing, and executing flash loans against Jupiter Lend markets.
+- [Jupiter Prediction API](https://apis.io/apis/jupiter-ag/prediction-api/) — Binary prediction-market API for browsing markets, fetching prices and positions, and constructing trade transactions.
+- [Jupiter Lite API](https://apis.io/apis/jupiter-ag/lite-api/) — Public, no-key, rate-limited mirror of the Jupiter API surface intended for experimentation, demos, and low-volume integrations.
+- [Jupiter Terminal](https://apis.io/apis/jupiter-ag/terminal/) — Open-source embeddable swap widget that drops a fully-featured Jupiter swap experience into any web app with a few lines of code.
+- [Jupiter Swap API](https://apis.io/apis/jupiter-ag/jupiter-ag-swap-api/) — Quote and build Solana DEX-aggregator swap transactions.
 
-## APIs
+### Published properties
 
-### Jupiter Swap API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Returns the best swap route across Solana DEX liquidity and produces a versioned transaction ready to sign and send. Supports quote-then-swap, swap-instructions for custom transaction building, slippage models, dynamic compute units, and priority fee guidance.
+#### Agentic access (1)
 
-- **Human URL:** [https://dev.jup.ag/docs/swap-api](https://dev.jup.ag/docs/swap-api)
-- **Base URL:** `https://api.jup.ag/swap`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Jupiter Ag Agentic Access](https://apis.io/agentic-access/jupiter-ag/jupiter-ag-agentic-access/)
 
-- Swap
-- Aggregation
-- Quote
-- Solana
+#### Collections (2)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://dev.jup.ag/docs/swap-api)
-- [Repository](https://github.com/jup-ag/jupiter-quote-api-node)
-- [Postman Collection](collections/jupiter-ag.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/jupiter-ag.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Jupiter Swap API](https://apis.io/collections/jupiter-ag/open-jupiter-ag/)
+- [Jupiter Swap API](https://apis.io/collections/jupiter-ag/open-jupiter-ag-swap-api/)
 
-### Jupiter Tokens API
+#### Security (2)
 
-Search Solana tokens by mint, symbol, or name; fetch metadata, verification status, tags, and trading metrics. Backs Jupiter's verified token list.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://dev.jup.ag/docs/tokens-api](https://dev.jup.ag/docs/tokens-api)
-- **Base URL:** `https://api.jup.ag/tokens`
+- [Jupiter Ag Authentication](https://apis.io/security/jupiter-ag/jupiter-ag-authentication/)
+- [Jupiter Ag Domain Security](https://apis.io/security/jupiter-ag/jupiter-ag-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Tokens
-- Metadata
-- Search
-- Solana
+Published plans, tiers and prices.
 
-#### Properties
+- [Jupiter Ag Plans Pricing](https://apis.io/plans/jupiter-ag/jupiter-ag-plans-pricing/)
 
-- [Documentation](https://dev.jup.ag/docs/tokens-api)
-- [Postman Collection](collections/jupiter-ag.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/jupiter-ag.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Jupiter Price API
+Published request limits.
 
-USD pricing for up to 50 Solana tokens per request, sourced from on-chain aggregated liquidity. Used for portfolio valuation, charting, and quote previews.
+- [Jupiter Ag Rate Limits](https://apis.io/rate-limits/jupiter-ag/jupiter-ag-rate-limits/)
 
-- **Human URL:** [https://dev.jup.ag/docs/price-api](https://dev.jup.ag/docs/price-api)
-- **Base URL:** `https://api.jup.ag/price`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Price
-- Market Data
-- Solana
+- [Jupiter Ag Finops](https://apis.io/finops/jupiter-ag/jupiter-ag-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://dev.jup.ag/docs/price-api)
-- [Postman Collection](collections/jupiter-ag.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/jupiter-ag.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Jupiter Trigger API (Limit Orders)
-
-Create, query, and cancel on-chain trigger orders — single limit orders as well as one-cancels-the-other (OCO) and one-triggers-the-other (OTOCO) order structures.
-
-- **Human URL:** [https://dev.jup.ag/docs/trigger-api](https://dev.jup.ag/docs/trigger-api)
-- **Base URL:** `https://api.jup.ag/trigger`
-
-#### Tags
-
-- Limit Orders
-- Trigger
-- Trading
-
-#### Properties
-
-- [Documentation](https://dev.jup.ag/docs/trigger-api)
-- [Postman Collection](collections/jupiter-ag.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/jupiter-ag.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Jupiter Recurring API (DCA)
-
-Schedule recurring (dollar-cost-averaging) swaps that execute on a time interval. Manage active DCA positions and fetch execution history.
-
-- **Human URL:** [https://dev.jup.ag/docs/recurring-api](https://dev.jup.ag/docs/recurring-api)
-- **Base URL:** `https://api.jup.ag/recurring`
-
-#### Tags
-
-- DCA
-- Recurring
-- Automation
-
-#### Properties
-
-- [Documentation](https://dev.jup.ag/docs/recurring-api)
-- [Postman Collection](collections/jupiter-ag.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/jupiter-ag.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Jupiter Perps API
-
-REST interface to Jupiter Perpetuals — fetch markets, positions, funding, pricing, and build open / close / modify position transactions.
-
-- **Human URL:** [https://dev.jup.ag/docs/perp-api](https://dev.jup.ag/docs/perp-api)
-- **Base URL:** `https://perps-api.jup.ag`
-
-#### Tags
-
-- Perpetuals
-- Leverage
-- Trading
-
-#### Properties
-
-- [Documentation](https://dev.jup.ag/docs/perp-api)
-- [Postman Collection](collections/jupiter-ag.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/jupiter-ag.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Jupiter Lend API
-
-Lending product API for supplying, borrowing, repaying, withdrawing, and executing flash loans against Jupiter Lend markets.
-
-- **Human URL:** [https://dev.jup.ag/docs/lend-api](https://dev.jup.ag/docs/lend-api)
-- **Base URL:** `https://api.jup.ag/lend`
-
-#### Tags
-
-- Lending
-- Borrowing
-- Flash Loans
-
-#### Properties
-
-- [Documentation](https://dev.jup.ag/docs/lend-api)
-- [Postman Collection](collections/jupiter-ag.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/jupiter-ag.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Jupiter Prediction API
-
-Binary prediction-market API for browsing markets, fetching prices and positions, and constructing trade transactions.
-
-- **Human URL:** [https://dev.jup.ag/docs/prediction-api](https://dev.jup.ag/docs/prediction-api)
-- **Base URL:** `https://api.jup.ag/prediction`
-
-#### Tags
-
-- Prediction Markets
-- Trading
-
-#### Properties
-
-- [Documentation](https://dev.jup.ag/docs/prediction-api)
-- [Postman Collection](collections/jupiter-ag.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/jupiter-ag.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Jupiter Lite API
-
-Public, no-key, rate-limited mirror of the Jupiter API surface intended for experimentation, demos, and low-volume integrations.
-
-- **Human URL:** [https://dev.jup.ag](https://dev.jup.ag)
-- **Base URL:** `https://lite-api.jup.ag`
-
-#### Tags
-
-- Public
-- Rate Limited
-- Lite
-
-#### Properties
-
-- [Documentation](https://dev.jup.ag)
-- [Postman Collection](collections/jupiter-ag.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/jupiter-ag.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Jupiter Terminal
-
-Open-source embeddable swap widget that drops a fully-featured Jupiter swap experience into any web app with a few lines of code.
-
-- **Human URL:** [https://terminal.jup.ag](https://terminal.jup.ag)
-- **Base URL:** `https://github.com/jup-ag/plugin`
-
-#### Tags
-
-- Widget
-- Embed
-- Swap
-
-#### Properties
-
-- [Documentation](https://terminal.jup.ag)
-- [Repository](https://github.com/jup-ag/plugin)
-- [Postman Collection](collections/jupiter-ag.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/jupiter-ag.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://jup.ag)
-- [Developers](https://dev.jup.ag)
 - [Documentation](https://dev.jup.ag/docs)
-- [Git Hub](https://github.com/jup-ag)
-- [Twitter](https://x.com/JupiterExchange)
-- [Discord](https://discord.gg/jup)
 - [Blog](https://www.jup.ag/blog)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 25.3** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 49.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 26.2 |
+| Access clarity | 5.3 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/jupiter-ag/](https://apis.io/providers/jupiter-ag/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Jupiter: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/jupiter-ag/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
